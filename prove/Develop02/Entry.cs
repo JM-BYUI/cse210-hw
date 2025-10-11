@@ -6,17 +6,18 @@ class Entry
     public string _response;
     public string _prompt;
     public string _date;
+    public int _entryNum;
     public Entry()
     {
 
     }
     public string getEntry()
     {
-        return $"Date: {_date} - Prompt: {_prompt} \n{_response}";
+        return $"Entry Number {_entryNum}\nDate: {_date} - Prompt: {_prompt} \n{_response}";
     }
     public void Display()
     {
-        string e = $"Date: {_date} - Prompt: {_prompt} \n{_response}\n";
+        string e = $"Entry Number {_entryNum}\nDate: {_date} - Prompt: {_prompt} \n{_response}\n";
         Console.WriteLine(e);
     }   
         

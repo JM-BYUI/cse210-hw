@@ -8,6 +8,7 @@ class Program
         bool run = true;
         Journal j = new Journal();
         Prompts p = new Prompts();
+        int eNum = 0;
         while (run == true)
         {
             Console.WriteLine("Select one of the following choices: \n1. Write \n2. Display  \n3. Load  \n4. Save  \n5. Quit\nWhat would you like to do?");
@@ -22,6 +23,8 @@ class Program
                 DateTime theCurrentTime = DateTime.Now;
                 string dateText = theCurrentTime.ToShortDateString();
                 e._date = dateText;
+                eNum++;
+                e._entryNum = eNum;
                 j._entries.Add(e);
             }
             else if (answer == "2")
