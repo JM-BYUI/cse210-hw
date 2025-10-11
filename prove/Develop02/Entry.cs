@@ -16,7 +16,7 @@ class Entry
     }
     public void Display()
     {
-        string e = $"Date: {_date} - Prompt: {_prompt} \n{_response}";
+        string e = $"Date: {_date} - Prompt: {_prompt} \n{_response}\n";
         Console.WriteLine(e);
     }   
         
