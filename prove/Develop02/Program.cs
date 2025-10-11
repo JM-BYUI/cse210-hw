@@ -6,29 +6,42 @@ class Program
     {
         Console.WriteLine("Welcome to your journal!");
         bool run = true;
+        Journal j = new Journal();
+        Prompts p = new Prompts();
         while (run == true)
         {
-            Prompts p = new Prompts();
-            Journal j = new Journal();
-            Entry e = new Entry();
             Console.WriteLine("Select one of the following choices: \n1. Write \n2. Display  \n3. Load  \n4. Save  \n5. Quit\nWhat would you like to do?");
             string answer = Console.ReadLine();
             if (answer == "1")
             {
-                p.Display();
+                Entry e = new Entry();
+                e._prompt = p.GetPrompt();
+                Console.WriteLine(e._prompt);
+                Console.Write(">");
+                e._response = Console.ReadLine();
+                DateTime theCurrentTime = DateTime.Now;
+                string dateText = theCurrentTime.ToShortDateString();
+                e._date = dateText;
+                j._entries.Add(e);
             }
             else if (answer == "2")
             {
+                j.Display();
 
             }
             else if (answer == "3")
             {
+                Console.WriteLine("What is the filename?");
+                Console.Write(">");
+                j._filename = Console.ReadLine();
                 j.Load();
             }
             else if (answer == "4")
             {
-
-
+                Console.WriteLine("What is the filename?");
+                Console.Write(">");
+                j._filename = Console.ReadLine();
+                j.Save();
             }
             else if (answer == "5")
             {

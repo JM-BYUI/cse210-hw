@@ -2,30 +2,32 @@ using System;
 
 class Prompts
 {
-    public string Q1 = "What was something good that happened today?";
-    public string Q2 = "What's something that you should work on?";
-    public string Q3 = "What's something funny or interesting that someone told you today?";
-    public string Q4 = "Did you read, watch, or listen to anything today? What was it?";
-    public void Display()
+    public static string[] _prompts = {
+        "What was something good that happened today?",
+        "What's something that you should work on?",
+        "What's something funny or interesting that someone told you today?",
+        "Did you read, watch, or listen to anything today? What was it?",
+        "What's the name of someone you talked to today?"
+        };
+    public List<string> _promptList = new List<string>(_prompts);
+    public Prompts()
     {
-        Random r = new Random();
-        int rnum = r.Next(1, 5);
-        if (rnum == 1)
-        {
-            Console.WriteLine(Q1);
-        }
-        if (rnum == 2)
-        {
-            Console.WriteLine(Q2);
-        }
-        if (rnum == 3)
-        {
-            Console.WriteLine(Q3);
-        }
-        if (rnum == 4)
-        {
-            Console.WriteLine(Q4);
-        }
 
     }
+
+    public void Display()
+    {
+        var ran = new Random();
+        int prompt_num = ran.Next(_promptList.Count);
+        Console.WriteLine(_promptList[prompt_num]);
+
+    }
+
+    public string GetPrompt()
+    {
+        var ran = new Random();
+        int prompt_num = ran.Next(_promptList.Count);
+        return _promptList[prompt_num];
+    }
+    
 }
