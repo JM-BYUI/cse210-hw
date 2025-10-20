@@ -5,7 +5,7 @@ class Verse
     private List<Word> _verse;
     public Verse()
     {
-
+        
     }
     public void Display()
     {
