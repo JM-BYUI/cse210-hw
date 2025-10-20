@@ -9,15 +9,18 @@ class Verse
     }
     public void Display()
     {
+        foreach (Word w in _verse)
+        {
+            w.display();
+        }
 
     }
     public void setWord(string w)
     {
         Word addedWord = new Word(w);
         _verse.Add(addedWord);
-
-
     }
+   
     public bool allHidden()
     {
         int hidden = 0;
