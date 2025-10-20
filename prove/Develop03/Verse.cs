@@ -20,7 +20,10 @@ class Verse
         Word addedWord = new Word(w);
         _verse.Add(addedWord);
     }
-   
+   public void hideWord (int w)
+    {
+        _verse[w].setHidden();
+    }
     public bool allHidden()
     {
         int hidden = 0;
