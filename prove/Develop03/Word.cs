@@ -28,6 +28,10 @@ class Word
         }
         else
         {
+            foreach (char c in _word)
+            {
+                Console.Write("_");
+            }
             Console.Write(" ");
         }
     }
