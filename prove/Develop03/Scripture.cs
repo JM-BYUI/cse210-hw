@@ -47,6 +47,7 @@ class Scripture
             {
                 Console.Clear();
                 running = false;
+                Environment.Exit(0);
             }
             Console.WriteLine(_reference);
             foreach (Verse v in _scripture)
@@ -59,6 +60,7 @@ class Scripture
             if (input == "quit")
             {
                 running = false;
+                Environment.Exit(0);
             }
             else
             {
@@ -90,6 +92,10 @@ class Scripture
                 Console.Clear();
             }
         }
+    }
+    public void set_reference(string r)
+    {
+        _reference = r;
     }
     public void add_verse(string s)
     {
