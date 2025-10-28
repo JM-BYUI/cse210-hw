@@ -5,7 +5,8 @@ class Verse
     private List<Word> _verse;
     public Verse()
     {
-        
+        _verse = new List<Word>();
+
     }
     public void Display()
     {
@@ -14,6 +15,14 @@ class Verse
             w.display();
         }
 
+    }
+    public Word getWord(int i)
+    {
+        return _verse[i];
+    }
+    public int count()
+    {
+        return _verse.Count;
     }
     public void setWord(string w)
     {

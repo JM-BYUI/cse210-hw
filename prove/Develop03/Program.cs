@@ -4,11 +4,11 @@ class Program
 {
     static void Main(string[] args)
     {
-        Verse v = new Verse();
-        v.setWord("Jesus");
-        v.setWord("wept.");
-        v.hideWord(1);
-        v.Display();
+        Scripture s = new Scripture();
+        s.prompt();
+        Console.Clear();
+        s.display();
+        
         
     }
 }
