@@ -82,16 +82,16 @@ class Profile
     {
         ListGoals();
         Console.Write("\nWhich goal did you accomplish? ");
-        int option = 0;
+        int option = -1;
         try
         {
             option = int.Parse(Console.ReadLine())-1;
         }
         catch
         {
-            option = 0;
+            option = -1;
         }
-        if (option != 0)
+        if (option >= 0)
         {
 
             int xp = GetGoals()[option].RecordEvent(_goals);

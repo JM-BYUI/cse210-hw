@@ -28,13 +28,19 @@ class Program
             profile.SetProfileName(nameInput);
         }
         Console.Clear();
-        Console.WriteLine($"Hello {profile.GetProfileName()}! You currently have a total of {profile.GetScore()} points. \n");
+        Console.WriteLine($"Hello {profile.GetProfileName()}!");
         Menu m = new Menu();
         GoalMenu gm = new GoalMenu();
         int choice = 0;
         while (choice != 7)
         {
-            Console.WriteLine();
+            if (profile.GetEvilPoints()>= 5)
+            {
+                Console.WriteLine("Evil has consumed you...");
+                Console.ForegroundColor = ConsoleColor.Red;
+
+            }
+            Console.WriteLine($"\nTotal Points: {profile.GetScore()}");
             choice = m.Choice();
             switch (choice)
             {
@@ -77,9 +83,9 @@ class Program
                             case 4:
                                 Console.Write("What is the name of your goal? ");
                                 string evName = Console.ReadLine();
-                                Console.Write("How many points is this goal worth? ");
+                                Console.Write("How many (negative) points is this goal worth? ");
                                 int evPoints = int.Parse(Console.ReadLine());
-                                EternalGoal evGoal = new EternalGoal("Eternal Goal", evName, evPoints);
+                                EvilGoal evGoal = new EvilGoal("Evil Goal", evName, evPoints);
                                 profile.AddGoal(evGoal);
                                 break;
                             case 5:
