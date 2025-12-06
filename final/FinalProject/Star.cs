@@ -11,23 +11,23 @@ class Star
     private int _size;
     private List<(string type, string name, int size, int temp)> _commonStars = new List<(string type, string name, int size, int temp)>
     {
-        ("G", "Yellow Star", 3, 3),
-        ("K", "Orange Dwarf", 2, 3),
-        ("M", "Red Dwarf", 2, 2),
+        ("G", "Yellow Star", 3, 2),
+        ("K", "Orange Dwarf", 2, 2),
+        ("M", "Red Dwarf", 2, 1),
     };
     private List<(string type, string name, int size, int temp)> _uncommonStars = new List<(string type, string name, int size, int temp)>
     {
         ("L", "Brown Dwarf", 1, 1),
-        ("D", "White Dwarf", 1, 2),
-        ("M", "Red Giant", 4, 5),
-        ("B", "Blue Giant", 4, 5),
-        ("A/F", "White Star", 3, 4)
+        ("D", "White Dwarf", 1, 1),
+        ("M", "Red Giant", 4, 3),
+        ("B", "Blue Giant", 4, 3),
+        ("A/F", "White Star", 3, 2)
         
     };
     private List<(string type, string name, int size, int temp)> _rareStars = new List<(string type, string name, int size, int temp)>
     {
-        ("M", "Red Supergiant", 5, 6),
-        ("O", "Blue Supergiant", 5, 6),
+        ("M", "Red Supergiant", 5, 4),
+        ("O", "Blue Supergiant", 5, 4),
         ("N/A", "Neutron Star", 0, 0),
         ("N/A", "Black Hole", 0, 0)
     };
