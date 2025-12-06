@@ -56,8 +56,6 @@ class Star
             _color = color[0];
             _size = _uncommonStars[c].size;
             _heat = _uncommonStars[c].temp;
-
-            
         }
         else if (rarity >= 9)
         {
