@@ -13,7 +13,7 @@ class Star
     {
         ("G", "Yellow Star", 3, 2),
         ("K", "Orange Dwarf", 2, 2),
-        ("M", "Red Dwarf", 2, 1),
+        ("M", "Red Dwarf", 2, 1)
     };
     private List<(string type, string name, int size, int temp)> _uncommonStars = new List<(string type, string name, int size, int temp)>
     {
