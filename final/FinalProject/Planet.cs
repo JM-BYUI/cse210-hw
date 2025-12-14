@@ -125,7 +125,7 @@ public class Planet
             _liquid = _planetsMed[c].liquid;
             _size = GenSize(_planetsMed[c].size);
         }
-        if (_sun.GetStarType() == "Red Giant" || _sun.GetStarType() == "Blue Giant" ||_sun.GetStarType() == "Red")
+        if (_sun.GetStarType() == "Red Giant" || _sun.GetStarType() == "Blue Giant" ||_sun.GetStarType() == "Red Supergiant" || _sun.GetStarType() == "Blue Supergiant")
         {
             int c = r.Next(_planetsGiant.Count());
             _planetType = _planetsGiant[c].type;
@@ -137,6 +137,30 @@ public class Planet
             _size = GenSize(_planetsGiant[c].size);
         }
         GenHab();
+        GenName();
+        GenFeatures();
+        Console.WriteLine($"The Planet {_name}");
+        Console.WriteLine($"Star: A Class {_sun.GetStarClass()} {_sun.GetStarType()}");
+        Console.WriteLine($"Classification: {_category}");
+        Console.WriteLine($"Type: {_planetType}");
+        Console.WriteLine($"Size: {_size}");
+        Console.WriteLine($"Habitability Index: {_habitability}");
+        Console.WriteLine($"Atmosphere: {_atmosphere}");
+        Console.WriteLine($"Liquid: {_liquid}");
+        Console.WriteLine($"Temperature: {_temp}");
+        Console.WriteLine($"Light Level: {_light}");
+        Console.WriteLine($"Biomes:");
+        foreach (Biome b in _features)
+        {
+            Console.WriteLine($"- {b.GetBiome(this)}");
+        }
+        foreach (Life l in _life)
+        {
+            l.Print();
+        }
+
+        
+
 
     }
     public bool HasLife()
@@ -169,14 +193,53 @@ public class Planet
     }
     public void GenFeatures()
     {
-        
+        if (_habitability < 70)
+        {
+            Biome b = new Biome("Unknown");
+            _features.Add(b);
+            GenLife(b);
+        }
+        else
+        {
+            int biomeCount = r.Next(1,4);
+            for (int i = 0; i< biomeCount; i++)
+            {
+                Biome b = new Biome("Unknown");
+                _features.Add(b);
+                GenLife(b);
+            }
+        }
     }
-    public void GenLife()
+    public void GenLife(Biome b)
     {
+        int lifeRoll = r.Next(0, 100);
+
+        if (lifeRoll < _habitability) 
+        {
+            PlantLife plant = new PlantLife(b, this);
+            plant.GenerateLife();
+            _life.Add(plant);
+        }
+
+        if (lifeRoll < _habitability - 20)
+        {
+            AnimalLife animal = new AnimalLife(b, this);
+            animal.GenerateLife();
+            _life.Add(animal);
+        }
+
+        if (lifeRoll < _habitability - 80)
+        {
+            SentientLife civ = new SentientLife(b, this);
+            civ.GenerateLife();
+            _life.Add(civ);
+        }
     }
     public void GenName()
     {
-        
+        string[] prefixes = { "Zim", "Zo", "Gim", "Gar", "Vo", "Nu", "Buu" };
+        string[] suffixes = { "tan", "tor", "gos", "th", "ta", "los", "nix" };
+        _name = prefixes[r.Next(prefixes.Length)] + suffixes[r.Next(suffixes.Length)];
     }
     public string GetName()
     {
@@ -184,110 +247,27 @@ public class Planet
     }
     public int GenHab()
     {
-        int hab = 100;
-        switch(_atmosphere)
+        int hab;
+        if (_planetType == "Terran World" || _planetType == "Ocean World" || _planetType == "Jungle World") 
         {
-            case "None":
-                hab -= 50;
-                break;
-            case "Thin":
-                hab -= 20;
-                break;
-            case "Full":
-                break;
-            case "Dense":
-                hab -= 10;
-                break;
-            case "Irradiated":
-                hab -= 60;
-                break;
-            default:
-                break;
+            hab = 100;
         }
-        switch(_light)
+        else if (_planetType == "Desert World" || _planetType == "Tundra World" )
         {
-            case "Dark":
-                hab -= 20;
-                break;
-            case "Dim":
-                hab -= 10;
-                break;
-            case "Average":
-                break;
-            case "Bright":
-                break;
-            case "Blinding":
-                hab -= 20;
-                break;
-            default:
-                break;
+            hab = 90;
         }
-        switch(_liquid)
+        else if (_planetType == "Cryovolcanic World")
         {
-            case "None":
-                hab -= 40;
-                break;
-            case "Frozen":
-                hab -= 10;
-                break;
-            case "Magma":
-                hab -= 50;
-                break;
-            case "Sparse":
-                hab -= 10;
-                break;
-            case "Cold Oceans":
-                break;
-            case "Oceans":
-                hab += 10;
-                break;
-            case "Surface":
-                hab += 20;
-                break;
-            default:
-                break;
+            hab = 70;
         }
-        switch(_temp)
-        {
-            case "Freezing":
-                hab -= 40;
-                break;
-            case "Frozen Surface":
-                hab -= 20;
-                break;
-            case "Geothermal":
-                break;
-            case "Cold":
-                hab -= 20;
-                break;
-            case "Chilly":
-                break;
-            case "Temperate":
-                hab +=10;
-                break;
-            case "Warm":
-                break;
-            case "Hot":
-                hab -= 20;
-                break;
-            case "Extremely Hot":
-                hab -= 30;
-                break;
-            default:
-                break;
-        }
-        switch (hab)
-        {
-            case >= 100:
-                hab = 100;
-                break;
-            case <= 0:
-                hab = 0;
-                break;
-            default:
-                break;
-        }
+        else
+        { hab = 0;}
         return hab;
     }
+    public string GetTemp() { return _temp; }
+    public string GetAtmosphere() { return _atmosphere; }
+    public string GetLiquid() { return _liquid; }
+    public string GetPlanetType() {return _planetType;}
+
 
 }

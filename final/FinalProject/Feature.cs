@@ -7,11 +7,8 @@ public class Feature
     {
         _name = n;
     }
-    public void GenFeature(Planet p)
-    {
-        
-        
-    }
+    public void GenFeature()
+    {}
     public void PrintFeature()
     {}
 }
