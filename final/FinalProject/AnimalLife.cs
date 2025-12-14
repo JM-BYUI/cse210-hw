@@ -20,6 +20,6 @@ class AnimalLife: Life
     }
     public override void Print()
     {
-        Console.WriteLine($"- {_classification} {_diet}");
+        Console.WriteLine($"Animals: {_classification} {_diet}");
     }
 }

@@ -136,7 +136,7 @@ public class Planet
             _liquid = _planetsGiant[c].liquid;
             _size = GenSize(_planetsGiant[c].size);
         }
-        GenHab();
+        _habitability = GenHab();
         GenName();
         GenFeatures();
         Console.WriteLine($"The Planet {_name}");
@@ -193,7 +193,7 @@ public class Planet
     }
     public void GenFeatures()
     {
-        if (_habitability < 70)
+        if (_habitability < 80)
         {
             Biome b = new Biome("Unknown");
             _features.Add(b);

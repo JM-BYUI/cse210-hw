@@ -33,6 +33,6 @@ class SentientLife: Life
     }
     public override void Print()
     {
-        Console.WriteLine($"- Intelligent Life: A {_tech} {_name}.");
+        Console.WriteLine($"Intelligent Life: {_tech} {_name}.");
     }
 }

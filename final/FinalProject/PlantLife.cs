@@ -9,7 +9,7 @@ class PlantLife: Life
     public override void GenerateLife()
     {
         Random r = new Random();
-        string[] types = { "Giant Fungi", "Bioluminescent Moss", "Carnivorous Flowers", "Shimmering Lichen", "Thin Trees", "Delicious Berries"};
+        string[] types = { "Giant Fungi", "Bioluminescent Moss", "Carnivorous Flowers", "Shimmering Lichen", "Thin Trees"};
         string[] colors = { "Red", "Green", "Blue", "Yellow", "Purple", "White"};
 
         _plantType = types[r.Next(types.Length)];
@@ -21,6 +21,6 @@ class PlantLife: Life
     }
     public override void Print()
     {
-        Console.WriteLine($"- {_color} {_plantType}");
+        Console.WriteLine($"Plants: {_color} {_plantType}");
     }
 }
